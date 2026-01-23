@@ -1,0 +1,3 @@
+D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/customShadersRS.dir
+D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
