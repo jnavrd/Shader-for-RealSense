@@ -13,7 +13,7 @@ public:
     void init();
     void update_texture(GrayscaleImg& img);
     void render();
-    bool should_close() const;  // wrapper de WindowShouldClose
+    static bool should_close() ;  // wrapper de WindowShouldClose
     void close();
 
 private:

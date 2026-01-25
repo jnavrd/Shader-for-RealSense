@@ -15,7 +15,7 @@ void renderer::update_texture(GrayscaleImg &img) {
 
     if(img.data.empty())
         return;
-    
+
     Image image = {
       .data = img.data.data(),
       .width = img.width,
@@ -38,12 +38,12 @@ void renderer::update_texture(GrayscaleImg &img) {
 void renderer::render() {
     BeginDrawing();
         ClearBackground(BLACK);
-        DrawTexture(texture_, 0, 0, WHITE);
+        //DrawTexture(texture_, 0, 0, WHITE);
+    DrawTextureEx(texture_, Vector2{ 0.0f, 0.0f }, 0.0f, 2.0f, WHITE);
     EndDrawing();
 }
 
-bool renderer::should_close() const {
-
+bool renderer::should_close() {
     return WindowShouldClose();
 }
 
