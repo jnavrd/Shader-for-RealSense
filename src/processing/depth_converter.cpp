@@ -3,6 +3,7 @@
 
 depth_converter::depth_converter() {}
 
+//cpu proccessing
 GrayscaleImg depth_converter::depth_frame_to_grayscale(DepthData depth) {
 
     GrayscaleImg image;
@@ -36,5 +37,6 @@ uint8_t depth_converter::normalize_depth(float depth_value) {
     return static_cast<uint8_t>(std::clamp(normalized, 0.0f, 1.0f) * 255.0f);
 
 }
+
 
 depth_converter::~depth_converter() = default;

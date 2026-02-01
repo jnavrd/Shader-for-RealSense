@@ -153,7 +153,7 @@ build rendering.lib: CXX_STATIC_LIBRARY_LINKER__rendering_Debug CMakeFiles\rende
 #############################################
 # Order-only phony target for customShadersRS
 
-build cmake_object_order_depends_target_customShadersRS: phony || cmake_object_order_depends_target_capture cmake_object_order_depends_target_glfw cmake_object_order_depends_target_processing cmake_object_order_depends_target_raylib cmake_object_order_depends_target_rendering
+build cmake_object_order_depends_target_customShadersRS: phony || cmake_object_order_depends_target_capture cmake_object_order_depends_target_glfw cmake_object_order_depends_target_processing cmake_object_order_depends_target_raylib cmake_object_order_depends_target_rendering copy_shaders
 
 build CMakeFiles\customShadersRS.dir\src\main.cpp.obj: CXX_COMPILER__customShadersRS_unscanned_Debug D$:\pft\pry$ 2025\RealSense\customShadersRS\src\main.cpp || cmake_object_order_depends_target_customShadersRS
   DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
@@ -172,17 +172,23 @@ build CMakeFiles\customShadersRS.dir\src\main.cpp.obj: CXX_COMPILER__customShade
 #############################################
 # Link the executable customShadersRS.exe
 
-build customShadersRS.exe: CXX_EXECUTABLE_LINKER__customShadersRS_Debug CMakeFiles\customShadersRS.dir\src\main.cpp.obj | capture.lib processing.lib rendering.lib D$:\instalaciones\Intel$ RealSense$ SDK$ 2.0\lib\x64\realsense2.lib _deps\raylib-build\raylib\raylib.lib _deps\raylib-build\raylib\external\glfw\src\glfw3.lib || _deps\raylib-build\raylib\external\glfw\src\glfw3.lib _deps\raylib-build\raylib\raylib.lib capture.lib processing.lib rendering.lib
+build customShadersRS.exe: CXX_EXECUTABLE_LINKER__customShadersRS_Debug CMakeFiles\customShadersRS.dir\src\main.cpp.obj | capture.lib processing.lib rendering.lib D$:\instalaciones\Intel$ RealSense$ SDK$ 2.0\lib\x64\realsense2.lib _deps\raylib-build\raylib\raylib.lib _deps\raylib-build\raylib\external\glfw\src\glfw3.lib || _deps\raylib-build\raylib\external\glfw\src\glfw3.lib _deps\raylib-build\raylib\raylib.lib capture.lib copy_shaders processing.lib rendering.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = capture.lib  processing.lib  rendering.lib  "D:\instalaciones\Intel RealSense SDK 2.0\lib\x64\realsense2.lib"  _deps\raylib-build\raylib\raylib.lib  opengl32.lib  glu32.lib  winmm.lib  _deps\raylib-build\raylib\external\glfw\src\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\customShadersRS.dir
-  POST_BUILD = cmd.exe /C "cd /D "D:\pft\pry 2025\RealSense\customShadersRS\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E copy_if_different "D:/instalaciones/Intel RealSense SDK 2.0/bin/x64/realsense2.dll" "D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/realsense2.dll""
+  POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\customShadersRS.dir\
   TARGET_FILE = customShadersRS.exe
   TARGET_IMPLIB = customShadersRS.lib
   TARGET_PDB = customShadersRS.pdb
+
+
+#############################################
+# Utility command for copy_shaders
+
+build copy_shaders: phony CMakeFiles\copy_shaders
 
 
 #############################################
@@ -260,6 +266,14 @@ build CMakeFiles\install\local.util: CUSTOM_COMMAND all
   restat = 1
 
 build install\local: phony CMakeFiles\install\local.util
+
+
+#############################################
+# Custom command for CMakeFiles\copy_shaders
+
+build CMakeFiles\copy_shaders | ${cmake_ninja_workdir}CMakeFiles\copy_shaders: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D "D:\pft\pry 2025\RealSense\customShadersRS\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E copy_directory "D:/pft/pry 2025/RealSense/customShadersRS/src/shaders" "D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/shaders""
+  DESC = Copying shaders to build directory
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -953,7 +967,7 @@ build update_mappings: phony _deps\raylib-build\raylib\external\glfw\src\update_
 #############################################
 # Folder: D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug
 
-build all: phony capture.lib processing.lib rendering.lib customShadersRS.exe _deps\raylib-build\all
+build all: phony capture.lib processing.lib rendering.lib customShadersRS.exe copy_shaders _deps\raylib-build\all
 
 # =============================================================================
 

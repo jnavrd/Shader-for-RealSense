@@ -19,9 +19,10 @@ void realsense_capture::start() { //initalize camera pipeline
     }   catch (const rs2::error& e) {
         std::cerr << "RealSense Error while configuring Pipeline: " << e.what() << std::endl;
     }
-    }
+}
 
-DepthData realsense_capture::get_depth_frame() {
+
+DepthData realsense_capture::get_depth_data() {
 
     rs2::frameset frameset = pipeline_.wait_for_frames();
     rs2::depth_frame depthFrame = frameset.get_depth_frame();
@@ -45,6 +46,33 @@ DepthData realsense_capture::get_depth_frame() {
     return depth;
 }
 
+DepthDataFloat realsense_capture::get_depth_data_float() {
+    rs2::frameset frameset = pipeline_.wait_for_frames();
+    rs2::depth_frame depthFrame = frameset.get_depth_frame();
+
+    if (!depthFrame){
+        std::cerr << "No depth frame";
+        return {};
+    }
+
+    int width = depthFrame.get_width();
+    int height = depthFrame.get_height();
+
+    DepthDataFloat depth;
+    depth.width = width;
+    depth.height = height;
+    depth.frame.resize(width * height);
+
+    //float vector, to be used in shader
+    const uint16_t* raw_data = reinterpret_cast<const uint16_t*>(depthFrame.get_data());
+
+    for(int i = 0; i < width * height; i++) {
+        depth.frame[i] = static_cast<float>(raw_data[i]) * depth_scale_; //depth en metros
+    }
+
+    return depth;
+}
+
 rs2::config realsense_capture::configure_pipeline() { //configure pipeline
 
     rs2::config cfg;
@@ -55,4 +83,8 @@ rs2::config realsense_capture::configure_pipeline() { //configure pipeline
         std::cerr << "RealSense Error while configuring Pipeline: " << e.what() << std::endl;
     }
     return cfg;
+}
+
+float realsense_capture::getDepthScale() const {
+    return depth_scale_;
 }

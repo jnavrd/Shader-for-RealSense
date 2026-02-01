@@ -12,6 +12,12 @@ struct DepthData {
     int height;
 };
 
+struct DepthDataFloat {
+    std::vector<float> frame;
+    int width;
+    int height;
+};
+
 //used in depth_converter
 struct GrayscaleImg {
     std::vector<uint8_t> data;

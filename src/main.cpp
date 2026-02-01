@@ -12,20 +12,29 @@ int main() {
     camera.start();
 
     //Convert depth frame data to grayscale
-    depth_converter grayscaleConverter = depth_converter();
+    depth_converter depthConverter = depth_converter();
 
     //Render
-    renderer windowRenderer = renderer(1280, 960, "Window");
+    renderer gpuRrenderer = renderer(1280, 960, "GPU proccessing");
 
-    windowRenderer.init();
-    while(!windowRenderer.should_close())
+    gpuRrenderer.init();
+    while (!gpuRrenderer.should_close())
     {
-        GrayscaleImg cameraImg = grayscaleConverter.depth_frame_to_grayscale(camera.get_depth_frame());
-        windowRenderer.update_texture(cameraImg);
-        windowRenderer.render();
+        gpuRrenderer.update_texture(camera.get_depth_data_float());
+        gpuRrenderer.render_with_quad();
     }
+    gpuRrenderer.close();
+/*
+    renderer cpuRenderer = renderer(1280, 960, "CPU proccessing");
+    cpuRenderer.init();
+    while(!cpuRenderer.should_close())
+    {
+        GrayscaleImg cameraImg = depthConverter.depth_frame_to_grayscale(camera.get_depth_data());
+        cpuRenderer.update_texture(cameraImg);
+        cpuRenderer.render();
+    }
+    cpuRenderer.close();*/
 
-    windowRenderer.close();
 
     return 0;
 }

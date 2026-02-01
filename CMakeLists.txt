@@ -57,9 +57,14 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(${PROJECT_NAME} PRIVATE capture processing rendering)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${REALSENSE_ROOT}/bin/x64/realsense2.dll"
-        "$<TARGET_FILE_DIR:${PROJECT_NAME}>/realsense2.dll"
-)
+add_dependencies(${PROJECT_NAME} copy_shaders)
 
+set(SHADER_SRC_DIR ${CMAKE_SOURCE_DIR}/src/shaders)
+set(SHADER_DST_DIR ${CMAKE_BINARY_DIR}/shaders)
+
+add_custom_target(copy_shaders ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${SHADER_SRC_DIR}
+        ${SHADER_DST_DIR}
+        COMMENT "Copying shaders to build directory"
+)

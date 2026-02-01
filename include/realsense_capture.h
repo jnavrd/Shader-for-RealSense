@@ -34,7 +34,10 @@ public:
 
     void start();
 
-    DepthData get_depth_frame();
+    float getDepthScale() const;
+
+    DepthData get_depth_data();
+    DepthDataFloat get_depth_data_float();
 
 private:
     rs2::pipeline pipeline_;
