@@ -3,26 +3,35 @@
 
 
 renderer::renderer(int window_width, int window_height, const char *title) :
-window_height_(window_height), window_width_(window_width), title_(title), texture_loaded_(false), shader_loaded_(false) {
+window_height_(window_height),
+window_width_(window_width),
+title_(title),
+texture_loaded_(false),
+shader_loaded_(false) {}
 
-}
-
-void renderer::init() {
+bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
-    //shader_ = LoadShader(NULL, "shaders/depth_grayscale.glsl");
-    //test
-    shader_ = LoadShader("shaders/fullscreen.fs", "shaders/depth_grayscale.glsl");
-
+    //check if shader is ready
+    shader_ = LoadShader(NULL, "shaders/depth_grayscale.glsl");
     if (!IsShaderReady(shader_))
     {
-        TraceLog(LOG_ERROR, "CUSTOM SHADER NOT READY");
+        TraceLog(LOG_ERROR, "Custom shader failed to load");
+        return false;
     }
-    else
-    {
-        TraceLog(LOG_INFO, "CUSTOM SHADER READY");
-    }
+
+    //check if uniforms are found
     texture_loc_ = GetShaderLocation(shader_, "texture0");
+    min_range_loc_ = GetShaderLocation(shader_, "min_range");
+    max_range_loc_ = GetShaderLocation(shader_, "max_range");
+    if(texture_loc_ == -1 || min_range_loc_ == -1 || max_range_loc_ == -1)
+    {
+        TraceLog(LOG_ERROR, "uniform not found");
+        return false;
+    }
+
+    shader_loaded_ = true;
+    return true;
 }
 
 void renderer::update_texture(GrayscaleImg &img) {
@@ -71,27 +80,16 @@ void renderer::update_texture(DepthDataFloat depth_data) {
     }
 }
 
-void renderer::set_shader_params(float depth_scale) {
+void renderer::set_shader_params(float min, float max) {
 
-    int depthScaleLoc = GetShaderLocation(shader_, "depth_scale");
-
-    SetShaderValue(shader_, depthScaleLoc, &depth_scale, SHADER_UNIFORM_FLOAT);
-}
-
-void renderer::set_shader_params(float depth_scale, float min, float max) {
-
+    SetShaderValue(shader_, min_range_loc_, &min, SHADER_UNIFORM_FLOAT);
+    SetShaderValue(shader_, max_range_loc_, &max, SHADER_UNIFORM_FLOAT);
 }
 
 void renderer::render() {
-    BeginDrawing();
-        ClearBackground(BLACK);
-        BeginShaderMode(shader_);
-            DrawTextureEx(texture_, Vector2{ 0.0f, 0.0f }, 0.0f, 2.0f, WHITE); //TODO dynamic scaling
-        EndShaderMode();
-    EndDrawing();
-}
 
-void renderer::render_with_quad() {
+    if(!shader_loaded_ || !texture_loaded_)
+        return;
 
     BeginDrawing();
         ClearBackground(BLUE);
@@ -106,26 +104,6 @@ void renderer::render_with_quad() {
                     0.0f,
                     WHITE
             );
-        //Draw quad
-       /* rlBegin(RL_QUADS);
-
-            // Top-left
-            rlTexCoord2f(0.0f, 0.0f);
-            rlVertex2f(0.0f, 0.0f);
-
-            // Top-right
-            rlTexCoord2f(1.0f, 0.0f);
-            rlVertex2f((float)window_width_, 0.0f);
-
-            // Bottom-right
-            rlTexCoord2f(1.0f, 1.0f);
-            rlVertex2f((float)window_width_, (float)window_height_);
-
-            // Bottom-left
-            rlTexCoord2f(0.0f, 1.0f);
-            rlVertex2f(0.0f, (float)window_height_);
-
-        rlEnd();*/
 
         EndShaderMode();
     EndDrawing();

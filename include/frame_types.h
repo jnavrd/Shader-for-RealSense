@@ -5,6 +5,7 @@
 #include <vector>
 
 //used in realsense_capture
+//unused
 struct DepthData {
     std::vector<uint16_t > frame;
     float depth_scale;
@@ -19,6 +20,7 @@ struct DepthDataFloat {
 };
 
 //used in depth_converter
+//unused
 struct GrayscaleImg {
     std::vector<uint8_t> data;
     int width;

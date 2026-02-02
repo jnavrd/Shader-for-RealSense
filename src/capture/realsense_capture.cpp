@@ -5,30 +5,60 @@
 #include <iostream>
 #include "realsense_capture.h"
 
-realsense_capture::realsense_capture(const std::string &serial_number) : serial_number_(serial_number), depth_scale_(0.0f) {
-}
+realsense_capture::realsense_capture(const std::string &serial_number) :
+serial_number_(serial_number),
+depth_scale_(0.0f),
+ready_(false) {}
 
 realsense_capture::~realsense_capture() = default;
 
-void realsense_capture::start() { //initalize camera pipeline
-    try{
-        profile_ = pipeline_.start(configure_pipeline());
+void realsense_capture::start() {
+    if (!check_devices()) throw std::runtime_error("Requested RealSense device not found");
 
-        auto sensor = profile_.get_device().first<rs2::depth_sensor>();
-        depth_scale_ = sensor.get_depth_scale();
-    }   catch (const rs2::error& e) {
-        std::cerr << "RealSense Error while configuring Pipeline: " << e.what() << std::endl;
-    }
+    profile_ = pipeline_.start(configure_pipeline());
+
+    auto sensor = profile_.get_device().first<rs2::depth_sensor>();
+    depth_scale_ = sensor.get_depth_scale();
+
+    ready_ = true;
 }
 
+bool realsense_capture::check_devices() {
+    rs2::context ctx;
+    auto devices = ctx.query_devices();
 
-DepthData realsense_capture::get_depth_data() {
+    if(devices.size() == 0)
+    {
+        std::cerr << "No RealSense devices found\n";
+        return false;
+    }
+
+    bool found = false;
+    for(auto&& dev : devices)
+    {
+        if(dev.get_info(RS2_CAMERA_INFO_SERIAL_NUMBER) == serial_number_)
+        {
+            found = true;
+            break;
+        }
+    }
+
+    if(!found)
+    {
+        std::cerr << "Serial number not found\n";
+        return false;
+    }
+
+    return true;
+}
+
+[[maybe_unused]] DepthData realsense_capture::get_depth_data() {
 
     rs2::frameset frameset = pipeline_.wait_for_frames();
     rs2::depth_frame depthFrame = frameset.get_depth_frame();
 
     if (!depthFrame){
-        std::cerr << "No depth frame";
+        std::cerr << "No depth frame\n";
         return {};
     }
 
@@ -47,13 +77,13 @@ DepthData realsense_capture::get_depth_data() {
 }
 
 DepthDataFloat realsense_capture::get_depth_data_float() {
+
+    if(!ready_) throw std::logic_error("Camera not started");
+
     rs2::frameset frameset = pipeline_.wait_for_frames();
     rs2::depth_frame depthFrame = frameset.get_depth_frame();
 
-    if (!depthFrame){
-        std::cerr << "No depth frame";
-        return {};
-    }
+    if (!depthFrame) throw std::runtime_error("Failed to acquire depth frame");
 
     int width = depthFrame.get_width();
     int height = depthFrame.get_height();
@@ -76,15 +106,12 @@ DepthDataFloat realsense_capture::get_depth_data_float() {
 rs2::config realsense_capture::configure_pipeline() { //configure pipeline
 
     rs2::config cfg;
-    try {
-        cfg.enable_device(serial_number_);
-        cfg.enable_stream(RS2_STREAM_DEPTH, STREAM_WIDTH, STREAM_HEIGHT, RS2_FORMAT_ANY, STREAM_FPS); //depth, 640x480, formato any (elige librealsense), 30fps
-    }  catch (const rs2::error& e) {
-        std::cerr << "RealSense Error while configuring Pipeline: " << e.what() << std::endl;
-    }
+    cfg.enable_device(serial_number_);
+    cfg.enable_stream(RS2_STREAM_DEPTH, STREAM_WIDTH, STREAM_HEIGHT, RS2_FORMAT_ANY, STREAM_FPS); //depth, 640x480, formato any (elige librealsense), 30fps
     return cfg;
 }
 
 float realsense_capture::getDepthScale() const {
     return depth_scale_;
 }
+

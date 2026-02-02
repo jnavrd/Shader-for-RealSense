@@ -5,36 +5,35 @@
 
 int main() {
     const std::string SERIAL_D435I = "841612071255";
-    const std::string SERIAL_D415 = "844612060543";
+    //const std::string SERIAL_D415 = "844612060543";
 
-    //Start and configure realsense camera
-    realsense_capture camera = realsense_capture(SERIAL_D435I);
-    camera.start();
+    try{
 
-    //Convert depth frame data to grayscale
-    depth_converter depthConverter = depth_converter();
+        //Start and configure realsense camera
+        realsense_capture camera = realsense_capture(SERIAL_D435I);
+        camera.start();
 
-    //Render
-    renderer gpuRrenderer = renderer(1280, 960, "GPU proccessing");
+        //Render
+        renderer r(1280, 960, "GPU proccessing");
+        if(!r.init())
+        {
+            std::cerr << "Render init failed \n";
+            return EXIT_FAILURE;
+        }
 
-    gpuRrenderer.init();
-    while (!gpuRrenderer.should_close())
+        while (!r.should_close())
+        {
+            auto depth_data = camera.get_depth_data_float();
+            r.update_texture(depth_data);
+            r.render();
+        }
+        r.close();
+
+    } catch (const std::exception& e)
     {
-        gpuRrenderer.update_texture(camera.get_depth_data_float());
-        gpuRrenderer.render_with_quad();
+        std::cerr << "" << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
-    gpuRrenderer.close();
-/*
-    renderer cpuRenderer = renderer(1280, 960, "CPU proccessing");
-    cpuRenderer.init();
-    while(!cpuRenderer.should_close())
-    {
-        GrayscaleImg cameraImg = depthConverter.depth_frame_to_grayscale(camera.get_depth_data());
-        cpuRenderer.update_texture(cameraImg);
-        cpuRenderer.render();
-    }
-    cpuRenderer.close();*/
 
-
-    return 0;
+    return EXIT_SUCCESS;
 }

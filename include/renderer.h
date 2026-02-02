@@ -12,24 +12,34 @@ public:
     renderer(int window_width, int window_height, const char *title);
     ~renderer();
 
-    void init();
-    void update_texture(GrayscaleImg& img);
+    bool init();
+
+    [[maybe_unused]] void update_texture(GrayscaleImg& img);
     void update_texture(DepthDataFloat depth_data);
-    void set_shader_params(float depth_scale);
-    void set_shader_params(float depth_scale, float min, float max);
+
+    void set_shader_params(float min, float max);
+
     void render();
-    void render_with_quad();
     static bool should_close() ;  // wrapper de WindowShouldClose
     void close();
 
 private:
+    //window
     int window_width_;
     int window_height_;
     const char *title_;
+
+    //raylib shader, texture
     Texture2D texture_;  // textura activa en GPU
-    bool texture_loaded_;
     Shader shader_;
-    bool shader_loaded_;
+    //uniforms location
     int texture_loc_;
+    int min_range_loc_;
+    int max_range_loc_;
+
+    //flags
+    bool texture_loaded_;
+    bool shader_loaded_;
 };
+
 #endif //CUSTOMSHADERSRS_renderer_H

@@ -8,9 +8,8 @@ in vec4 fragColor;
 uniform sampler2D texture0;
 uniform vec4 colDiffuse;
 
-//uniform float min_range;
-//uniform float max_range;
-uniform float depth_scale;
+uniform float min_range;
+uniform float max_range;
 
 // Output fragment color
 out vec4 finalColor;

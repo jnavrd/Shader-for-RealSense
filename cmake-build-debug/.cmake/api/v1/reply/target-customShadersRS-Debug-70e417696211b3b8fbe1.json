@@ -133,20 +133,20 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 2,
-			"id" : "capture::@6890427a1f51a3e7e1df"
+			"backtrace" : 7,
+			"id" : "copy_shaders::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "processing::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 7,
-			"id" : "copy_shaders::@6890427a1f51a3e7e1df"
+			"backtrace" : 2,
+			"id" : "rendering::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "rendering::@6890427a1f51a3e7e1df"
+			"id" : "capture::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,

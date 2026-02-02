@@ -29,23 +29,27 @@ class realsense_capture {
 
 public:
     explicit realsense_capture(const std::string& serial_number);
-
     virtual ~realsense_capture();
 
     void start();
 
-    float getDepthScale() const;
-
-    DepthData get_depth_data();
+    [[maybe_unused]] DepthData get_depth_data();
     DepthDataFloat get_depth_data_float();
 
+    float getDepthScale() const;
+
 private:
+    //realsense
     rs2::pipeline pipeline_;
     rs2::pipeline_profile profile_;
     float depth_scale_;
     std::string serial_number_;
 
+    //flags
+    bool ready_;
+
     rs2::config configure_pipeline();
+    bool check_devices();
 };
 
 
