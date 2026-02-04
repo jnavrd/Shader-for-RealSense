@@ -14,12 +14,10 @@ uniform float max_range;
 // Output fragment color
 out vec4 finalColor;
 
-float MIN_RANGE = 0.1;
-float MAX_RANGE = 1.0;
-
 float normalize_depth(float depth_value)
 {
-    float normalized = (depth_value - MIN_RANGE) / (MAX_RANGE - MIN_RANGE);
+    float normalized = (depth_value - min_range) / (max_range - min_range);
+
     return clamp(normalized, 0.0, 1.0);
 }
 
@@ -33,5 +31,5 @@ void main()
     float gray_scale = normalize_depth(depth_value);
 
     vec3 color = vec3(gray_scale);
-    finalColor = vec4(color, 1.0) * colDiffuse;
+    finalColor = vec4(color, 1.0);
 }

@@ -7,7 +7,7 @@ int main() {
     const std::string SERIAL_D435I = "841612071255";
     //const std::string SERIAL_D415 = "844612060543";
 
-    try{
+  try{
 
         //Start and configure realsense camera
         realsense_capture camera = realsense_capture(SERIAL_D435I);
@@ -21,6 +21,7 @@ int main() {
             return EXIT_FAILURE;
         }
 
+        r.set_shader_params(0.1, 1.0);
         while (!r.should_close())
         {
             auto depth_data = camera.get_depth_data_float();

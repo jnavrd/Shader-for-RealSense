@@ -13,7 +13,7 @@ bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
     //check if shader is ready
-    shader_ = LoadShader(NULL, "shaders/depth_grayscale.glsl");
+    shader_ = LoadShader(NULL, "shaders/depth_variance.glsl");
     if (!IsShaderReady(shader_))
     {
         TraceLog(LOG_ERROR, "Custom shader failed to load");
@@ -24,11 +24,11 @@ bool renderer::init() {
     texture_loc_ = GetShaderLocation(shader_, "texture0");
     min_range_loc_ = GetShaderLocation(shader_, "min_range");
     max_range_loc_ = GetShaderLocation(shader_, "max_range");
-    if(texture_loc_ == -1 || min_range_loc_ == -1 || max_range_loc_ == -1)
+   /* if(texture_loc_ == -1 || min_range_loc_ == -1 || max_range_loc_ == -1)
     {
         TraceLog(LOG_ERROR, "uniform not found");
         return false;
-    }
+    }*/
 
     shader_loaded_ = true;
     return true;
