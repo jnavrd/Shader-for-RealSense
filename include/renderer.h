@@ -34,6 +34,7 @@ private:
     Shader shader_;
     //uniforms location
     int texture_loc_;
+    int current_time_;
     int min_range_loc_;
     int max_range_loc_;
 

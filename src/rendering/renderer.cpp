@@ -13,7 +13,7 @@ bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
     //check if shader is ready
-    shader_ = LoadShader(NULL, "shaders/depth_variance.glsl");
+    shader_ = LoadShader(NULL, "shaders/ripple_effect.glsl");
     if (!IsShaderReady(shader_))
     {
         TraceLog(LOG_ERROR, "Custom shader failed to load");
@@ -22,6 +22,7 @@ bool renderer::init() {
 
     //check if uniforms are found
     texture_loc_ = GetShaderLocation(shader_, "texture0");
+    current_time_ = GetShaderLocation(shader_, "current_time");
     min_range_loc_ = GetShaderLocation(shader_, "min_range");
     max_range_loc_ = GetShaderLocation(shader_, "max_range");
    /* if(texture_loc_ == -1 || min_range_loc_ == -1 || max_range_loc_ == -1)
@@ -95,7 +96,11 @@ void renderer::render() {
         ClearBackground(BLUE);
         BeginShaderMode(shader_);
 
+            float time = (float)GetTime();
+
             SetShaderValueTexture(shader_, texture_loc_, texture_);
+            SetShaderValue(shader_, current_time_, &time, SHADER_UNIFORM_FLOAT);
+
             DrawTexturePro(
                     texture_,
                     Rectangle{ 0, 0, (float)texture_.width, (float)texture_.height },

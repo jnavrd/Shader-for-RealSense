@@ -1,0 +1,37 @@
+# ninja log v5
+1	50	7923002200713117	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	f726f2c0d897c34d
+1	50	7923002200713117	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	f726f2c0d897c34d
+1	99019	7923003921320858	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	a2d0eaccd9d81e16
+1	99019	7923003921320858	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	a2d0eaccd9d81e16
+99020	99145	0	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	8a021f7a43754026
+99145	99194	7923003923061578	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	57b5b168455109ec
+99020	99145	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	8a021f7a43754026
+99145	99194	7923003923061578	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	57b5b168455109ec
+99194	99242	7923003923551583	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	59f7805f6979b5cb
+99194	99242	7923003923551583	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	59f7805f6979b5cb
+99242	99289	7923003924021576	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	df9c0911c2a50315
+99242	99289	7923003924021576	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	df9c0911c2a50315
+99384	99451	7923003925641580	CMakeFiles/raylib-populate-complete	4ad0c96a3e0a7044
+99289	99336	7923003924491583	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	c96ac14410b57352
+99289	99336	7923003924491583	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	c96ac14410b57352
+99336	99384	7923003924971572	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	bf80290be2a6c2b9
+99336	99384	7923003924971572	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	bf80290be2a6c2b9
+99384	99451	7923003925641580	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	4ad0c96a3e0a7044
+99384	99451	7923003925641580	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	4ad0c96a3e0a7044
+99384	99451	7923003925641580	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	4ad0c96a3e0a7044
+1	124	0	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	8a021f7a43754026
+1	124	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	8a021f7a43754026
+124	171	7923004256152225	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	57b5b168455109ec
+124	171	7923004256152225	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	57b5b168455109ec
+171	219	7923004256642203	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	59f7805f6979b5cb
+171	219	7923004256642203	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	59f7805f6979b5cb
+220	268	7923004257122206	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	df9c0911c2a50315
+220	268	7923004257122206	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	df9c0911c2a50315
+268	316	7923004257602203	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	c96ac14410b57352
+268	316	7923004257602203	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	c96ac14410b57352
+316	362	7923004258072205	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	bf80290be2a6c2b9
+316	362	7923004258072205	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	bf80290be2a6c2b9
+362	425	7923004258692203	CMakeFiles/raylib-populate-complete	4ad0c96a3e0a7044
+362	425	7923004258692203	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	4ad0c96a3e0a7044
+362	425	7923004258692203	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	4ad0c96a3e0a7044
+362	425	7923004258692203	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	4ad0c96a3e0a7044
