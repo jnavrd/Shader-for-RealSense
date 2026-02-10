@@ -12,27 +12,67 @@ shader_loaded_(false) {}
 bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
-    //check if shader is ready
-    shader_ = LoadShader(NULL, "shaders/ripple_effect.glsl");
-    if (!IsShaderReady(shader_))
-    {
-        TraceLog(LOG_ERROR, "Custom shader failed to load");
+    //check if shaders are ready
+    shader_ = LoadShader(NULL, "shaders/ripple/ripple_effect.glsl");
+    simulation_shader_ = LoadShader(NULL, "shaders/ripple/simulation_shader.glsl");
+
+
+    if (!IsShaderReady(shader_)) {
+        TraceLog(LOG_ERROR, "Custom display shader failed to load");
+        return false;
+    }
+    if(!IsShaderReady(simulation_shader_)) {
+        TraceLog(LOG_ERROR, "Simulation shader failed to load");
         return false;
     }
 
-    //check if uniforms are found
-    texture_loc_ = GetShaderLocation(shader_, "texture0");
-    current_time_ = GetShaderLocation(shader_, "current_time");
-    min_range_loc_ = GetShaderLocation(shader_, "min_range");
-    max_range_loc_ = GetShaderLocation(shader_, "max_range");
-   /* if(texture_loc_ == -1 || min_range_loc_ == -1 || max_range_loc_ == -1)
+    //load textures
+    prev_texture_ = LoadRenderTexture(window_width_, window_height_);
+
+    texture_buffers[0] = LoadRenderTexture(window_width_, window_height_);
+    texture_buffers[1] = LoadRenderTexture(window_width_, window_height_);
+    for (const auto & texture_buffer : texture_buffers)
     {
-        TraceLog(LOG_ERROR, "uniform not found");
+        BeginTextureMode(texture_buffer);
+        ClearBackground(BLACK);
+        EndTextureMode();
+    }
+
+    if (!loadDisplayShaderUniforms()) {
+        TraceLog(LOG_ERROR, "Display shader uniforms missing");
         return false;
-    }*/
+    }
+    if (!loadSimulationShaderUniforms()) {
+        TraceLog(LOG_ERROR, "Simulation shader uniforms missing");
+        return false;
+    }
 
     shader_loaded_ = true;
     return true;
+}
+
+bool renderer::loadDisplayShaderUniforms()
+{
+    bool ret = false;
+
+    texture_loc_ = GetShaderLocation(shader_, "depthData");
+    ripple_state_texture_loc_ = GetShaderLocation(shader_, "rippleData");
+    //current_time_ = GetShaderLocation(shader_, "current_time");
+    min_range_loc_ = GetShaderLocation(shader_, "min_range");
+    max_range_loc_ = GetShaderLocation(shader_, "max_range");
+
+    return texture_loc_ != -1 && ripple_state_texture_loc_ != -1;
+}
+
+bool renderer::loadSimulationShaderUniforms()
+{
+
+    prev_state_loc_ = GetShaderLocation(simulation_shader_, "prevState");
+    sim_depth_texture_loc_ = GetShaderLocation(simulation_shader_, "depth");
+    prev_depth_texture_loc_ = GetShaderLocation(simulation_shader_, "prevDepth");
+    sim_time_loc_ = GetShaderLocation(shader_, "current_time");
+
+    return prev_state_loc_ != -1 && sim_depth_texture_loc_ != -1;
 }
 
 void renderer::update_texture(GrayscaleImg &img) {
@@ -56,7 +96,6 @@ void renderer::update_texture(GrayscaleImg &img) {
     {
         UpdateTexture(texture_, image.data);
     }
-
 }
 
 void renderer::update_texture(DepthDataFloat depth_data) {
@@ -112,6 +151,59 @@ void renderer::render() {
 
         EndShaderMode();
     EndDrawing();
+}
+
+void renderer::render(DepthDataFloat depth_data) {
+
+    if(!shader_loaded_ || !texture_loaded_)
+        return;
+
+    update_texture(depth_data);
+
+    int read_buffer = current_sim_buffer_;
+    int write_buffer = 1 - current_sim_buffer_;
+
+    // Simulation
+    BeginTextureMode(texture_buffers[write_buffer]);
+        BeginShaderMode(simulation_shader_);
+            float time = (float)GetTime();
+
+            Texture2D read = texture_buffers[read_buffer].texture;
+            SetShaderValue(simulation_shader_, current_time_, &time, SHADER_UNIFORM_FLOAT);
+            SetShaderValueTexture(simulation_shader_, prev_state_loc_, read);
+            SetShaderValueTexture(simulation_shader_, sim_depth_texture_loc_, texture_);
+            SetShaderValueTexture(simulation_shader_, prev_depth_texture_loc_, prev_texture_.texture);
+            DrawRectangle(0,0,read.width,read.height,WHITE);
+
+        EndShaderMode();
+    EndTextureMode();
+
+
+    BeginDrawing();
+            ClearBackground(BLUE);
+            BeginShaderMode(shader_);
+
+                Texture2D current = texture_buffers[write_buffer].texture;
+                //ripple state
+                SetShaderValueTexture(shader_, texture_loc_, texture_);
+                SetShaderValueTexture(shader_, ripple_state_texture_loc_, current);
+                DrawTexturePro(
+                        texture_,
+                        Rectangle{ 0, 0, (float)texture_.width, (float)texture_.height },
+                        Rectangle{ 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() },
+                        Vector2{ 0, 0 },
+                        0.0f,
+                        WHITE
+                );
+
+        EndShaderMode();
+    EndDrawing();
+
+    current_sim_buffer_ = write_buffer;
+
+    BeginTextureMode(prev_texture_);
+        DrawTexture(texture_, 0, 0, WHITE);
+    EndTextureMode();
 }
 
 bool renderer::should_close() {

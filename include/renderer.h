@@ -20,6 +20,8 @@ public:
     void set_shader_params(float min, float max);
 
     void render();
+    void render(DepthDataFloat depth_data); //for ping-pong shaders
+
     static bool should_close() ;  // wrapper de WindowShouldClose
     void close();
 
@@ -29,11 +31,24 @@ private:
     int window_height_;
     const char *title_;
 
-    //raylib shader, texture
     Texture2D texture_;  // textura activa en GPU
-    Shader shader_;
+    RenderTexture2D prev_texture_;
+    RenderTexture2D texture_buffers[2];
+    int current_sim_buffer_ = 0;
+
+    Shader change_detection_shader_;
+    Shader simulation_shader_;
+    Shader shader_; //display shader
+
     //uniforms location
     int texture_loc_;
+    int ripple_state_texture_loc_;
+
+    int sim_depth_texture_loc_;
+    int prev_depth_texture_loc_;
+    int prev_state_loc_;
+    int sim_time_loc_;
+
     int current_time_;
     int min_range_loc_;
     int max_range_loc_;
@@ -41,6 +56,11 @@ private:
     //flags
     bool texture_loaded_;
     bool shader_loaded_;
+
+    //TODO SACAR
+    bool loadDisplayShaderUniforms();
+    bool loadSimulationShaderUniforms();
+    bool loadChangeShaderUniforms();
 };
 
 #endif //CUSTOMSHADERSRS_renderer_H

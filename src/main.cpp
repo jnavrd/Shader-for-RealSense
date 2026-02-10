@@ -26,7 +26,7 @@ int main() {
         {
             auto depth_data = camera.get_depth_data_float();
             r.update_texture(depth_data);
-            r.render();
+            r.render(depth_data);
         }
         r.close();
 
