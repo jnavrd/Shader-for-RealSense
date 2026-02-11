@@ -179,7 +179,7 @@ void renderer::render(DepthDataFloat depth_data) {
             DrawTexturePro(
                     read,
                     Rectangle{0, 0, (float)read.width, -(float)read.height},
-                    Rectangle{0, 0, (float)window_width_, (float)window_height_},
+                    Rectangle{0, 0, (float)read.width, (float)read.height},
                     Vector2{0, 0},
                     0.0f,
                     WHITE
@@ -200,7 +200,7 @@ void renderer::render(DepthDataFloat depth_data) {
                 DrawTexturePro(
                         texture_,
                         Rectangle{ 0, 0, (float)texture_.width, (float)texture_.height },
-                        Rectangle{ 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() },
+                        Rectangle{ 0, 0, (float)window_width_, (float)window_height_ },
                         Vector2{ 0, 0 },
                         0.0f,
                         WHITE
@@ -215,7 +215,7 @@ void renderer::render(DepthDataFloat depth_data) {
         DrawTexturePro(
                         texture_,
                         Rectangle{ 0, 0, (float)texture_.width, -(float)texture_.height },
-                        Rectangle{ 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() },
+                        Rectangle{ 0, 0, (float)window_width_, (float)window_height_ },
                         Vector2{ 0, 0 },
                         0.0f,
                         WHITE

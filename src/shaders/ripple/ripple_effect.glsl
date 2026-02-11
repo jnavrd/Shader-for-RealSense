@@ -111,20 +111,21 @@ void main()
     float heightUp = texture(rippleData, fragTexCoord + vec2(0.0, -texelSize.y)).r;
     float heightDown = texture(rippleData, fragTexCoord + vec2(0.0, texelSize.y)).r;
 
-    float ripple = 0.0;
-    float rippleHeight = rippleState.r;
 
     vec2 rippleGradient = vec2(
         heightRight - heightLeft,
         heightDown - heightUp
     );
 
-
     // Background
-    float distortionStrength = 1.6; // ajusta este valor
-    vec2 distortedUV = fragTexCoord + rippleGradient * distortionStrength;
 
-    float n = fbm(distortedUV * 5.0);
+    float ripple = 0.0;
+    float rippleHeight = rippleState.r;
+
+    float distortionStrength = 1.6; // ajusta este valor
+    vec2 distortedUV = fragTexCoord;
+    float n = fbm((distortedUV * 5.0) + rippleHeight * 2.0);
+
     //float n = fbm(fragTexCoord*5.0);
     n = floor(n * 6.0) / 6.0;
     vec3 background = vec3(0.35, 0.55, 0.9)*n;
@@ -133,12 +134,9 @@ void main()
 
 
     if (depth_value > background_threshold) {
-        background += vec3(0.1, 0.15, 0.2) * rippleHeight;
         color = background;
-        // Modular por ripples
-        /*color += rippleHeight * 0.3;
-        floor(color * 6 / 6);*/
     }
+
 
     finalColor = vec4(color, 1.0);
 }
