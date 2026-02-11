@@ -29,8 +29,8 @@ void main() {
     float laplacian = neighbors - height;
 
     // Física: actualizar velocidad y altura
-    float waveSpeed = 0.5;
-    float damping = 0.98;
+    float waveSpeed = 1.2;
+    float damping = 0.995;  // solo 0.5% de pérdida por frame
 
     velocity += laplacian * waveSpeed;
     velocity *= damping;
@@ -41,13 +41,12 @@ void main() {
     float prevD = texture(prevDepth, fragTexCoord).r;
     float change = abs(prevD - currDepth);
 
-    if (change > 0.05) {  // threshold de movimiento
-        height += 0.5;  // impulso fuerte
+    if (change > 0.1) {  // threshold de movimiento
+        height += sin(current_time * 5.0) * 0.1;  // impulso fuerte
     }
-    vec2 center = vec2(0.5, 0.5);
-    if (distance(fragTexCoord, center) < 0.05) {
-        height += sin(current_time * 5.0) * 0.1;  // pulsa en el centro
-    }
+
+    velocity *= damping;
+    height += velocity;
 
     finalColor = vec4(height, velocity, 0.0, 1.0);
 }

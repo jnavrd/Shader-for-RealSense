@@ -34,9 +34,11 @@ bool renderer::init() {
     for (const auto & texture_buffer : texture_buffers)
     {
         BeginTextureMode(texture_buffer);
-        ClearBackground(BLACK);
+            ClearBackground(BLACK);
         EndTextureMode();
     }
+
+    std::cout << "Texture format: " << texture_buffers[0].texture.format << std::endl;
 
     if (!loadDisplayShaderUniforms()) {
         TraceLog(LOG_ERROR, "Display shader uniforms missing");
@@ -70,9 +72,10 @@ bool renderer::loadSimulationShaderUniforms()
     prev_state_loc_ = GetShaderLocation(simulation_shader_, "prevState");
     sim_depth_texture_loc_ = GetShaderLocation(simulation_shader_, "depth");
     prev_depth_texture_loc_ = GetShaderLocation(simulation_shader_, "prevDepth");
-    sim_time_loc_ = GetShaderLocation(shader_, "current_time");
+    sim_time_loc_ = GetShaderLocation(simulation_shader_, "current_time");
 
-    return prev_state_loc_ != -1 && sim_depth_texture_loc_ != -1;
+    return prev_state_loc_ != -1 && sim_depth_texture_loc_ != -1
+    && prev_depth_texture_loc_ != -1 && sim_time_loc_ != -1 ;
 }
 
 void renderer::update_texture(GrayscaleImg &img) {
@@ -169,18 +172,25 @@ void renderer::render(DepthDataFloat depth_data) {
             float time = (float)GetTime();
 
             Texture2D read = texture_buffers[read_buffer].texture;
-            SetShaderValue(simulation_shader_, current_time_, &time, SHADER_UNIFORM_FLOAT);
+            SetShaderValue(simulation_shader_, sim_time_loc_, &time, SHADER_UNIFORM_FLOAT);
             SetShaderValueTexture(simulation_shader_, prev_state_loc_, read);
             SetShaderValueTexture(simulation_shader_, sim_depth_texture_loc_, texture_);
             SetShaderValueTexture(simulation_shader_, prev_depth_texture_loc_, prev_texture_.texture);
-            DrawRectangle(0,0,read.width,read.height,WHITE);
+            DrawTexturePro(
+                    read,
+                    Rectangle{0, 0, (float)read.width, -(float)read.height},
+                    Rectangle{0, 0, (float)window_width_, (float)window_height_},
+                    Vector2{0, 0},
+                    0.0f,
+                    WHITE
+            );
 
         EndShaderMode();
     EndTextureMode();
 
 
     BeginDrawing();
-            ClearBackground(BLUE);
+            ClearBackground(BLACK);
             BeginShaderMode(shader_);
 
                 Texture2D current = texture_buffers[write_buffer].texture;
@@ -201,9 +211,9 @@ void renderer::render(DepthDataFloat depth_data) {
 
     current_sim_buffer_ = write_buffer;
 
-    BeginTextureMode(prev_texture_);
+/*    BeginTextureMode(prev_texture_);
         DrawTexture(texture_, 0, 0, WHITE);
-    EndTextureMode();
+    EndTextureMode();*/
 }
 
 bool renderer::should_close() {

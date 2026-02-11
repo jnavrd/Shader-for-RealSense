@@ -29,13 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90a99570-60fb-4d32-869e-2007e35ba2e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shaders/ripple/display_test.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/customShadersRS.dir/src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/customShadersRS.dir/src/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/customShadersRS.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/customShadersRS.dir/vc140.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/rendering.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/rendering.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -43,11 +39,13 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/rendering.lib" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/rendering.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple_effect.glsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/ripple_effect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/ripple_effect.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/sim_test.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/sim_test.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/simulation_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/simulation_shader.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/renderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shaders/ripple_effect.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shaders/ripple/ripple_effect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/ripple_effect.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shaders/ripple/sim_test.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/sim_test.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shaders/ripple/simulation_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/simulation_shader.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,26 +73,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/pft/pry 2025/RealSense/customShadersRS/src/shaders/ripple",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;renderer-refactor&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/pft/pry 2025/RealSense/customShadersRS/src/shaders/ripple&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\pft\pry 2025\RealSense\customShadersRS\src\shaders\ripple" />
@@ -105,11 +103,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.customShadersRS">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="capture" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="customShadersRS" TARGET_NAME="capture" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -180,7 +173,8 @@
       <workItem from="1770577764662" duration="773000" />
       <workItem from="1770588026033" duration="11000" />
       <workItem from="1770588046341" duration="11794000" />
-      <workItem from="1770660181291" duration="17365000" />
+      <workItem from="1770660181291" duration="19401000" />
+      <workItem from="1770767689885" duration="1623000" />
     </task>
     <servers />
   </component>
@@ -192,5 +186,16 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

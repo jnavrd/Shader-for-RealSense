@@ -107,16 +107,17 @@ void main()
     n = floor(n * 6.0) / 6.0;
     vec3 background = vec3(0.35, 0.55, 0.9)*n;
 
-    float background_threshold = 0.85;
+    float background_threshold = 0.75;
 
     float rippleHeight = rippleState.r;
 
+    // Tu lógica de fondo existente
     if (depth_value > background_threshold) {
-        color = background;
+        color = background;  // tu FBM + celeste
         // Modular por ripples
         color += rippleHeight * 0.3;  // o *= (1.0 + rippleHeight * 0.2)
     }
 
+    float height = rippleState.r;
     finalColor = vec4(color, 1.0);
-
 }

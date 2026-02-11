@@ -1,71 +1,101 @@
 # ninja log v5
 1580	1928	7923010326580556	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj	3a9e7c95b3d00925
 7	47	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-24	753	7923010314704941	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj	ca2d324568c4708
 7	47	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+24	753	7923010314704941	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj	ca2d324568c4708
 37	415	7923010311499288	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj	655989908d83c296
 1148	1571	7923010323040522	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj	30e27ab9cd00bb67
 33	501	7923010312354902	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj	68df05f83199d285
-1204	1580	7923010323130515	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj	26d5476aa4c389c0
 28	834	7923010315668866	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj	83a1afd54653e6d5
-51	2661	7923893529388018	CMakeFiles/customShadersRS.dir/src/main.cpp.obj	243e64609b169a61
-834	1204	7923010319368816	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj	68ee8f466feff61c
+1204	1580	7923010323130515	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj	26d5476aa4c389c0
 416	556	7923010312904893	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj	e3a542dc7dc9371f
+834	1204	7923010319368816	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj	68ee8f466feff61c
+49	2370	7924727803173273	CMakeFiles/customShadersRS.dir/src/main.cpp.obj	243e64609b169a61
 20	759	7923010314744910	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj	a800c80e467443c5
 501	913	7923010316478800	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj	212b03959703d64a
 556	1069	7923010318038825	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj	6787ac92f7550ad9
-2	3457	7923010341910494	CMakeFiles/capture.dir/src/capture/realsense_capture.cpp.obj	f5b5e188ab36e6ab
-2398	2614	7923010332030564	_deps/raylib-build/raylib/raylib.lib	860b35d0b02833b9
 760	1148	7923010318818800	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj	cfe8c71e37e85c23
+2398	2614	7923010332030564	_deps/raylib-build/raylib/raylib.lib	860b35d0b02833b9
+2	3457	7923010341910494	CMakeFiles/capture.dir/src/capture/realsense_capture.cpp.obj	f5b5e188ab36e6ab
 753	1163	7923010318968810	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj	97c155686b0893a5
 7	1268	7923010320019759	CMakeFiles/processing.dir/src/processing/depth_converter.cpp.obj	21417f8d8473d3ee
 914	1304	7923010320379786	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj	1149180b997a7002
 1069	1499	7923010322180535	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj	d9dacb3ef1c3314a
-42	1618	7923010323430521	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj	883e877876c857d8
 1163	1553	7923010322860544	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	29ea123b2c118855
+42	1618	7923010323430521	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj	883e877876c857d8
 1268	1598	7923010322700565	processing.lib	15520ff75b7591c
 1304	1763	7923010324970543	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj	34540e855334e774
-1922	2223	7923010329580561	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj	addc804644ce5090
 1553	1922	7923010326560532	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj	e51491c2f1992d9b
-3457	3531	7923010342350511	capture.lib	662528b6246c46d6
+1922	2223	7923010329580561	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj	addc804644ce5090
 1571	1934	7923010326590536	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj	b42a617a9ccc5ffc
+3457	3531	7923010342350511	capture.lib	662528b6246c46d6
 1499	1940	7923010326650534	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj	78c532566f2c4753
 1598	1941	7923010326690519	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj	f3dba2deb4bda2f
 1618	1973	7923010327060569	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj	3ef2eb61b3c44785
-3	931	7923909707880199	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+3	930	7924736168330265	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
 1763	2127	7923010328610533	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj	bbb671331a1abedd
 1934	2265	7923010330010534	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	8f9699413a313984
 1929	2295	7923010330300530	_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	21673c6a8d25b2e7
 2295	2398	7923010330830613	_deps/raylib-build/raylib/external/glfw/src/glfw3.lib	fe7e404b012c571
-932	1005	7923909708250211	rendering.lib	ad57afa4c130412d
-1005	1312	7923909710190332	customShadersRS.exe	cda2dfa1eb00fbc8
-3	41	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-3	46	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-3	46	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+930	995	7924736168694207	rendering.lib	ad57afa4c130412d
+995	1290	7924736170509149	customShadersRS.exe	cda2dfa1eb00fbc8
 3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+7	47	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+7	47	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	918	7924736528326274	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+919	992	7924736528686277	rendering.lib	ad57afa4c130412d
+992	1308	7924736530782160	customShadersRS.exe	cda2dfa1eb00fbc8
+7	47	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+7	47	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	929	7924737110406463	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+930	990	7924737110766480	rendering.lib	ad57afa4c130412d
+990	1285	7924737112536445	customShadersRS.exe	cda2dfa1eb00fbc8
+3	47	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	47	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 8	50	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 8	50	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-51	2628	7923923815810358	CMakeFiles/customShadersRS.dir/src/main.cpp.obj	243e64609b169a61
+3	953	7924737838623799	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+954	1019	7924737838986374	rendering.lib	ad57afa4c130412d
+1019	1341	7924737841074352	customShadersRS.exe	cda2dfa1eb00fbc8
 7	48	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 7	48	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-3	961	7923924839155132	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
-961	1029	7923924839605161	rendering.lib	ad57afa4c130412d
-1029	1471	7923924841895176	customShadersRS.exe	cda2dfa1eb00fbc8
+3	929	7924738683041953	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+930	1009	7924738683411975	rendering.lib	ad57afa4c130412d
+1009	1320	7924738685339395	customShadersRS.exe	cda2dfa1eb00fbc8
+8	49	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+8	49	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+4	932	7924738842783555	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+933	995	7924738843153579	rendering.lib	ad57afa4c130412d
+995	1276	7924738844886807	customShadersRS.exe	cda2dfa1eb00fbc8
+3	62	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	62	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	44	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	44	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	47	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	47	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+4	46	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+4	46	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 3	43	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	43	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+4	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+4	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	CMakeFiles/copy_shaders	7713bfb46092fb85
-3	41	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	43	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+3	43	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+4	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+4	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	CMakeFiles/copy_shaders	7713bfb46092fb85
 3	42	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+8	48	0	CMakeFiles/copy_shaders	7713bfb46092fb85
+8	48	0	D:/pft/pry 2025/RealSense/customShadersRS/cmake-build-debug/CMakeFiles/copy_shaders	7713bfb46092fb85
+3	1220	7924767325779013	CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj	322aee7de363b1bd
+1220	1278	7924767326149027	rendering.lib	ad57afa4c130412d
+1279	1655	7924767327809170	customShadersRS.exe	cda2dfa1eb00fbc8
