@@ -23,6 +23,7 @@ float normalize_depth(float depth_value)
     return clamp(normalized, 0.0, 1.0);
 }
 
+//unused, kernel
 vec2[9] set_offsets(vec2 step_size)
 {
 
@@ -53,7 +54,7 @@ float noise (vec2 st) {
     //esquina inf izquierda
     vec2 i = floor(st); // floor:  integrer mas grande que es menor o igual al input.
     //pos dentro de la celda
-    vec2 f = fract(st); // x - floor(x) rango [ 0.0, 1.0 )
+    vec2 f = fract(st); // x - floor(x) rango [ 0.0, 1.0 )
 
     // Four corners in 2D of a tile
     float a = random(i);
@@ -78,8 +79,8 @@ float fbm(vec2 st) {
 
     for (int i = 0; i < 3; i++) {
         value += amplitude * noise(st);
-        st *= 2.0;        // DUPLICA la frecuencia (constante, no oscilante)
-        amplitude *= 0.5; // REDUCE la amplitud a la mitad
+        st *= 2.0;        // duplica la frecuencia (constante, no oscilante)
+        amplitude *= 0.5; // reduce la amplitud a la mitad
     }
     return value;
 }
@@ -90,34 +91,54 @@ void main()
     vec4 texel = texture(depthData, fragTexCoord);
     vec4 rippleState = texture(rippleData, fragTexCoord);
 
+    vec2 texelSize = 1.0 / vec2(textureSize(rippleData, 0));
+
     //raw depth value value in meters
     float depth_value = texel.r;
     float gray_scale = normalize_depth(depth_value);
 
-    ivec2 texture_size = textureSize(depthData, 0);
+    //UNUSED, kernel for edge detection
+    /*ivec2 texture_size = textureSize(depthData, 0);
     vec2 step_size = 1.0/texture_size; //textel size
+    vec2 offsets[9] = set_offsets(step_size);*/
 
-    vec2 offsets[9] = set_offsets(step_size);
-
+    //depth visualization
     vec3 color = vec3(gray_scale);
-    float ripple = 0.0;
 
-    //background
-    float n = fbm(fragTexCoord*5.0);
+    //riples
+    float heightLeft = texture(rippleData, fragTexCoord + vec2(-texelSize.x, 0.0)).r;
+    float heightRight = texture(rippleData, fragTexCoord + vec2(texelSize.x, 0.0)).r;
+    float heightUp = texture(rippleData, fragTexCoord + vec2(0.0, -texelSize.y)).r;
+    float heightDown = texture(rippleData, fragTexCoord + vec2(0.0, texelSize.y)).r;
+
+    float ripple = 0.0;
+    float rippleHeight = rippleState.r;
+
+    vec2 rippleGradient = vec2(
+        heightRight - heightLeft,
+        heightDown - heightUp
+    );
+
+
+    // Background
+    float distortionStrength = 1.6; // ajusta este valor
+    vec2 distortedUV = fragTexCoord + rippleGradient * distortionStrength;
+
+    float n = fbm(distortedUV * 5.0);
+    //float n = fbm(fragTexCoord*5.0);
     n = floor(n * 6.0) / 6.0;
     vec3 background = vec3(0.35, 0.55, 0.9)*n;
 
     float background_threshold = 0.75;
 
-    float rippleHeight = rippleState.r;
 
-    // Tu lógica de fondo existente
     if (depth_value > background_threshold) {
-        color = background;  // tu FBM + celeste
+        background += vec3(0.1, 0.15, 0.2) * rippleHeight;
+        color = background;
         // Modular por ripples
-        color += rippleHeight * 0.3;  // o *= (1.0 + rippleHeight * 0.2)
+        /*color += rippleHeight * 0.3;
+        floor(color * 6 / 6);*/
     }
 
-    float height = rippleState.r;
     finalColor = vec4(color, 1.0);
 }

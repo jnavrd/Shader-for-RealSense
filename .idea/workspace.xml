@@ -32,19 +32,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/rendering.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/rendering.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rendering.dir/src/rendering/renderer.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/customShadersRS.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/rendering.lib" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/rendering.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/ripple_effect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/ripple_effect.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/sim_test.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/sim_test.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/simulation_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/shaders/ripple/simulation_shader.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/renderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/ripple/ripple_effect.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/ripple_effect.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shaders/ripple/sim_test.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/sim_test.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/ripple/simulation_shader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ripple/simulation_shader.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +170,7 @@
       <workItem from="1770588026033" duration="11000" />
       <workItem from="1770588046341" duration="11794000" />
       <workItem from="1770660181291" duration="19401000" />
-      <workItem from="1770767689885" duration="1623000" />
+      <workItem from="1770767689885" duration="11128000" />
     </task>
     <servers />
   </component>

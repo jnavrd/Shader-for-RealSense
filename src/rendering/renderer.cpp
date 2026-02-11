@@ -75,7 +75,7 @@ bool renderer::loadSimulationShaderUniforms()
     sim_time_loc_ = GetShaderLocation(simulation_shader_, "current_time");
 
     return prev_state_loc_ != -1 && sim_depth_texture_loc_ != -1
-    && prev_depth_texture_loc_ != -1 && sim_time_loc_ != -1 ;
+    && prev_depth_texture_loc_ != -1/* && sim_time_loc_ != -1*/ ;
 }
 
 void renderer::update_texture(GrayscaleImg &img) {
@@ -211,9 +211,16 @@ void renderer::render(DepthDataFloat depth_data) {
 
     current_sim_buffer_ = write_buffer;
 
-/*    BeginTextureMode(prev_texture_);
-        DrawTexture(texture_, 0, 0, WHITE);
-    EndTextureMode();*/
+    BeginTextureMode(prev_texture_);
+        DrawTexturePro(
+                        texture_,
+                        Rectangle{ 0, 0, (float)texture_.width, -(float)texture_.height },
+                        Rectangle{ 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() },
+                        Vector2{ 0, 0 },
+                        0.0f,
+                        WHITE
+                );
+    EndTextureMode();
 }
 
 bool renderer::should_close() {
