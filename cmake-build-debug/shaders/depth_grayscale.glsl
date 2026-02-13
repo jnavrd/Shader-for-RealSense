@@ -28,6 +28,12 @@ void main()
 
     //raw value in float
     float depth_value = texel.r; // PIXELFORMAT_UNCOMPRESSED_R32, 32 bpp (1 channel - float)
+
+    if(depth_value < min_range || depth_value > max_range)
+    {
+        discard;
+    }
+
     float gray_scale = normalize_depth(depth_value);
 
     vec3 color = vec3(gray_scale);

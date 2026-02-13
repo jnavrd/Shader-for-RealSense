@@ -13,7 +13,7 @@ bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
     //check if shader is ready
-    shader_ = LoadShader(NULL, "shaders/ripple_effect.glsl");
+    shader_ = LoadShader(NULL, "shaders/depth_grayscale.glsl");
     if (!IsShaderReady(shader_))
     {
         TraceLog(LOG_ERROR, "Custom shader failed to load");
@@ -93,7 +93,7 @@ void renderer::render() {
         return;
 
     BeginDrawing();
-        ClearBackground(BLUE);
+        ClearBackground(GRAY);
         BeginShaderMode(shader_);
 
             float time = (float)GetTime();

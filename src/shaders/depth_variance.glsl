@@ -34,6 +34,7 @@ void main()
     ivec2 texture_size = textureSize(texture0, 0);
     vec2 step_size = 1.0/texture_size; //textel size
 
+    //kernel
     vec2 offsets[9] = vec2[](
     vec2(-step_size.x,  -step_size.y),
     vec2( 0.0f,         -step_size.y),
@@ -53,9 +54,9 @@ void main()
         float neighbor_depth = texture(texture0, neighbor_coord).r;
         if(neighbor_depth > 1)
         {
-            color = vec3(1, 0, 1); //magenta
+            color = vec3(0.675, 1, 0.953); //magenta
         }else if(neighbor_depth < depth_value)
-        color = vec3(0,0.5,1);
+        color = vec3(0.25, 0.098, 0);
     }
 
     finalColor = vec4(color, 1.0);

@@ -49,18 +49,20 @@ void main()
     vec3 color = vec3(gray_scale);
     vec3 backgound = vec3(0,0,1);
     float background_threshold = 0.75;
+    float object_threshold = 0.25;
    // int close_neighbors; //amount of pixels close to camera vs far to be considered edge of object
 
     if(depth_value > background_threshold) //if i am background
     {
         color = backgound;
-        for(int i = 0; i < 9; i++) {
-            vec2 neighbor_coord = fragTexCoord + offsets[i];
-            float neighbor_depth = texture(texture0, neighbor_coord).r;
-            if(depth_value - neighbor_depth > background_threshold) //edge
-            {
-                color = vec3(1,0,0);
-            }
+    }
+
+    for(int i = 0; i < 9; i++) {
+        vec2 neighbor_coord = fragTexCoord + offsets[i];
+        float neighbor_depth = texture(texture0, neighbor_coord).r;
+        if(depth_value - neighbor_depth > object_threshold) //edge
+        {
+            color = vec3(1,0,0);
         }
     }
 

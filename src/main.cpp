@@ -21,7 +21,7 @@ int main() {
             return EXIT_FAILURE;
         }
 
-        r.set_shader_params(0.1, 1.0);
+        r.set_shader_params(0.1, 3.0);
         while (!r.should_close())
         {
             auto depth_data = camera.get_depth_data_float();
