@@ -52,7 +52,6 @@ pictured: Me holding a hair clip </br>
 pictured: Boots with highlighted depth transitions </br>
 <img width="620" height="400" alt="Pasted image 20260212200611" src="https://github.com/user-attachments/assets/404957e1-ec78-4c28-9775-3bb57606dd9a" />
 
-### Ripple effect + FBM (Feedback Loop)
-(currently in renderer-refactor)
+### Propagation simulation + FBM (Feedback Loop)
 ![IMG_0097](https://github.com/user-attachments/assets/797c1e5f-490f-4da5-a390-d1a696a097f6)
 
