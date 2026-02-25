@@ -56,6 +56,12 @@ add_library(rendering STATIC
         src/rendering/renderer.cpp
         include/renderer.h
         include/frame_types.h
+        src/rendering/simple_pass.cpp
+        include/simple_pass.h
+        src/rendering/feedback_pass.cpp
+        include/feedback_pass.h
+        src/rendering/render_pass.cpp
+        include/render_pass.h
 )
 target_include_directories(rendering PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include

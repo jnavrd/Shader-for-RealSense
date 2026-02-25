@@ -6,12 +6,12 @@ renderer::renderer(int window_width, int window_height, const char *title) :
 window_height_(window_height),
 window_width_(window_width),
 title_(title),
-texture_loaded_(false),
-shader_loaded_(false) {}
+texture_loaded_(false) {}
 
 bool renderer::init() {
     InitWindow(window_width_, window_height_, title_);
 
+<<<<<<< HEAD
     //check if shader is ready
     shader_ = LoadShader(NULL, "shaders/depth_grayscale.glsl");
     if (!IsShaderReady(shader_))
@@ -55,8 +55,13 @@ void renderer::update_texture(GrayscaleImg &img) {
     } else
     {
         UpdateTexture(texture_, image.data);
+=======
+    if(render_pass_ != nullptr && render_pass_->init()){
+        return true;
+>>>>>>> renderer-refactor
     }
 
+    return false;
 }
 
 void renderer::update_texture(DepthDataFloat depth_data) {
@@ -82,15 +87,14 @@ void renderer::update_texture(DepthDataFloat depth_data) {
 }
 
 void renderer::set_shader_params(float min, float max) {
-
-    SetShaderValue(shader_, min_range_loc_, &min, SHADER_UNIFORM_FLOAT);
-    SetShaderValue(shader_, max_range_loc_, &max, SHADER_UNIFORM_FLOAT);
+    render_pass_->set_min_max_parameters(min, max);
 }
 
-void renderer::render() {
-
-    if(!shader_loaded_ || !texture_loaded_)
+void renderer::render(DepthDataFloat depth_data)  {
+    update_texture(depth_data);
+    if(!texture_loaded_)
         return;
+<<<<<<< HEAD
 
     BeginDrawing();
         ClearBackground(GRAY);
@@ -112,6 +116,9 @@ void renderer::render() {
 
         EndShaderMode();
     EndDrawing();
+=======
+    render_pass_->render(texture_);
+>>>>>>> renderer-refactor
 }
 
 bool renderer::should_close() {
@@ -120,8 +127,10 @@ bool renderer::should_close() {
 
 void renderer::close() {
     UnloadTexture(texture_);
-    UnloadShader(shader_);
+    render_pass_->unload_shaders();
     CloseWindow();
 }
 
-renderer::~renderer() = default;
+void renderer::set_pass(std::unique_ptr<render_pass> pass) {
+    render_pass_ = std::move(pass);
+}
